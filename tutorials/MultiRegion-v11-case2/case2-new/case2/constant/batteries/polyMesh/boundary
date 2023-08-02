@@ -1,0 +1,55 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       polyBoundaryMesh;
+    location    "constant/batteries/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+4
+(
+    walls
+    {
+        type            wall;
+        inGroups        List<word> 1(wall);
+        nFaces          4484;
+        startFace       186976;
+    }
+    back
+    {
+        type            symmetry;
+        inGroups        List<word> 1(symmetry);
+        nFaces          4484;
+        startFace       191460;
+    }
+    batteries_to_Air
+    {
+        type            mappedWall;
+        inGroups        List<word> 1(wall);
+        nFaces          17100;
+        startFace       195944;
+        neighbourRegion Air;
+        neighbourPatch  Air_to_batteries;
+        transformType   none;
+    }
+    batteries_to_silicaGel
+    {
+        type            mappedWall;
+        inGroups        List<word> 1(wall);
+        nFaces          3540;
+        startFace       213044;
+        neighbourRegion silicaGel;
+        neighbourPatch  silicaGel_to_batteries;
+        transformType   none;
+    }
+)
+
+// ************************************************************************* //

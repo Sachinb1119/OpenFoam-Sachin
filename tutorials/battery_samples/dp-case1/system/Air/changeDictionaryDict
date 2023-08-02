@@ -1,0 +1,181 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  dev                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      changeDictionaryDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+U
+{
+    internalField   uniform (0 0 0);
+
+    boundaryField
+    {
+        inlet
+        {
+            type            fixedValue;
+            value           uniform (0 0 0);
+        }
+
+        outlet
+        {
+            type            inletOutlet;
+            inletValue      uniform (0 0 0);
+        }
+
+        walls
+        {
+            type            noSlip;
+        }
+        
+        "Air_to.*"
+        {
+            type           noSlip;
+        }      
+    }
+}
+
+T
+{
+    internalField   uniform 298;
+
+    boundaryField
+    {
+        inlet
+        {
+            type            fixedValue;
+            value           uniform 298;
+        }
+
+        outlet
+        {
+            type            fixedValue;
+            inletValue      uniform 298;
+        }
+
+        walls
+        {
+            type            zeroGradient;
+            value           uniform 298;
+        }
+
+        "Air_to.*"
+        {
+            type            compressible::turbulentTemperatureCoupledBaffleMixed;
+            //Tnbr            T;
+            //kappaMethod     fluidThermo;
+            value           uniform 298;
+        }
+    }
+}
+
+/*
+epsilon
+{
+    internalField   uniform 0.01;
+
+    boundaryField
+    {
+        minX
+        {
+            type            fixedValue;
+            value           uniform 0.01;
+        }
+
+        maxX
+        {
+            type            inletOutlet;
+            inletValue      uniform 0.01;
+        }
+
+        ".*"
+        {
+            type            epsilonWallFunction;
+            value           uniform 0.01;
+        }
+    }
+}
+
+k
+{
+    internalField   uniform 0.1;
+
+    boundaryField
+    {
+        minX
+        {
+            type            inletOutlet;
+            inletValue      uniform 0.1;
+        }
+
+        maxX
+        {
+            type            zeroGradient;
+            value           uniform 0.1;
+        }
+
+        ".*"
+        {
+            type            kqRWallFunction;
+            value           uniform 0.1;
+        }
+    }
+}
+*/
+
+p_rgh
+{
+    internalField   uniform 1e5;
+
+    boundaryField
+    {
+        inlet
+        {
+            type            fixedValue;
+            value           uniform 1e5;
+        }
+
+        outlet
+        {
+            type            fixedValue;
+            value           uniform 1e5;
+        }
+
+        walls
+        {
+            type            zeroGradient;
+            value           uniform 1e5;
+        }
+        
+        "Air_to.*"
+        {
+            type         zeroGradient;
+        }   
+    }
+}
+
+/*
+p
+{
+    internalField   uniform 0;
+
+    boundaryField
+    {
+        ".*"
+        {
+            type            calculated;
+            value           uniform 0;
+        }
+    }
+}
+*/
+// ************************************************************************* //

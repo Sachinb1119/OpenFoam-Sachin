@@ -1,0 +1,35 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 11
+Exec   : decomposePar -allRegions
+Date   : Jul 25 2023
+Time   : 11:55:06
+Host   : "BLTSW01581"
+PID    : 3731077
+I/O    : uncollated
+Case   : /home/user/OpenFOAM-11/tutorials/dp-case1
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+
+
+--> FOAM FATAL IO ERROR: 
+keyword regionSolvers is undefined in dictionary "/home/user/OpenFOAM-11/tutorials/dp-case1/system/controlDict"
+
+file: /home/user/OpenFOAM-11/tutorials/dp-case1/system/controlDict from line 17 to line 57.
+
+    From function const Foam::dictionary& Foam::dictionary::subDict(const Foam::word&) const
+    in file db/dictionary/dictionary.C at line 1004.
+
+FOAM exiting
+

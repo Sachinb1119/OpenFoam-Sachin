@@ -1,0 +1,12 @@
+energySource
+{
+	type 		scalarSemiImplicitSource;
+	active		yes;
+	selectiveMode	cellZone;
+	cellZone	battery1;
+	volumeMode	specific;
+	injectionRateSuSp
+	{
+	  h		(29359.953 0);
+	}
+}

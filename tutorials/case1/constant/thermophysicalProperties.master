@@ -1,0 +1,38 @@
+air
+{
+
+transport
+{
+kappa 0.0263; // thermal conductivity, [W/(m.K)]
+nu    0.0000184
+}
+
+thermodynamics
+{
+thermoType    heRhoThermo; // or just thermo
+equationOfState  perfectGas; // Equation of State
+Cp 1005; // heat capacity at constant pressure, [J/(kmol K)], ref. FactSage FactPS database
+rho 1.185; // density, [kg/m^3]
+}
+
+}
+
+
+
+battery1
+{
+
+transport
+{
+kappa 2.7; // thermal conductivity, [W/(m.K)]
+}
+
+thermodynamics
+{
+thermoType    heSolidThermo; // or just thermo
+equationOfState  Const; // Equation of State
+Cp 733; // Specific heat capacity at constant pressure, [J/(kmol K)], ref. FactSage FactPS database
+rho 1958.7; // density, [kg/m^3]
+}
+
+}

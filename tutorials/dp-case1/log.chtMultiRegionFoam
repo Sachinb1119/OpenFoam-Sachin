@@ -1,0 +1,59 @@
+Invalid MIT-MAGIC-COOKIE-1 key
+chtMultiRegionFoam has been superseded and replaced by the more general
+foamMultiRun solver module executor which will be executed instead:
+
+
+chtMultiRegionFoam has been superseded and replaced by the more general
+foamMultiRun solver module executor which will be executed instead:
+
+
+chtMultiRegionFoam has been superseded and replaced by the more general
+foamMultiRun solver module executor which will be executed instead:
+
+
+chtMultiRegionFoam has been superseded and replaced by the more general
+foamMultiRun solver module executor which will be executed instead:
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 11
+Exec   : foamMultiRun -parallel
+Date   : Jul 25 2023
+Time   : 11:55:07
+Host   : "BLTSW01581"
+PID    : 3731091
+I/O    : uncollated
+Case   : /home/user/OpenFOAM-11/tutorials/dp-case1
+nProcs : 4
+Slaves : 
+3
+(
+"BLTSW01581.3731094"
+"BLTSW01581.3731097"
+"BLTSW01581.3731099"
+)
+
+Pstream initialised with:
+    floatTransfer      : false
+    nProcsSimpleSum    : 0
+    commsType          : nonBlocking
+    polling iterations : 0
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+[0] 
+[0] 
+[0] --> FOAM FATAL ERROR: 
+[0] foamMultiRun: cannot open case directory "/home/user/OpenFOAM-11/tutorials/dp-case1/processor0"
+[0] 
+[0] 
+FOAM parallel run exiting
+[0] 
+[BLTSW01581:3731083] [[4015,0],0] ORTE_ERROR_LOG: Data unpack would read past end of buffer in file util/show_help.c at line 507

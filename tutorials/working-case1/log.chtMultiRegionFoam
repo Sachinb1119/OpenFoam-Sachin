@@ -1,0 +1,55 @@
+
+chtMultiRegionFoam has been superseded and replaced by the more general
+foamMultiRun solver module executor which will be executed instead:
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 11
+Exec   : foamMultiRun
+Date   : Jul 26 2023
+Time   : 14:17:48
+Host   : "BLTSW01581"
+PID    : 3500800
+I/O    : uncollated
+Case   : /home/user/OpenFOAM-11/tutorials/working-case1
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Selecting solver solid
+Selecting thermodynamics package 
+{
+    type            heSolidThermo;
+    mixture         pureMixture;
+    transport       constIsoSolid;
+    thermo          eConst;
+    equationOfState rhoConst;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+#0  Foam::error::printStack(Foam::Ostream&) at ??:?
+#1  Foam::sigFpe::sigHandler(int) at ??:?
+#2  ? in "/lib/x86_64-linux-gnu/libc.so.6"
+#3  double Foam::species::thermo<Foam::eConstThermo<Foam::rhoConst<Foam::specie> >, Foam::sensibleInternalEnergy>::T<Foam::species::thermo<Foam::eConstThermo<Foam::rhoConst<Foam::specie> >, Foam::sensibleInternalEnergy>, double (Foam::eConstThermo<Foam::rhoConst<Foam::specie> >::*)(double, double) const, double (Foam::eConstThermo<Foam::rhoConst<Foam::specie> >::*)(double, double) const, double (Foam::eConstThermo<Foam::rhoConst<Foam::specie> >::*)(double) const>(Foam::species::thermo<Foam::eConstThermo<Foam::rhoConst<Foam::specie> >, Foam::sensibleInternalEnergy> const&, double, double, double, double (Foam::eConstThermo<Foam::rhoConst<Foam::specie> >::*)(double, double) const, double (Foam::eConstThermo<Foam::rhoConst<Foam::specie> >::*)(double, double) const, double (Foam::eConstThermo<Foam::rhoConst<Foam::specie> >::*)(double) const, bool) at ??:?
+#4  Foam::heSolidThermo<Foam::solidThermo::composite, Foam::pureMixture<Foam::constIsoSolidTransport<Foam::species::thermo<Foam::eConstThermo<Foam::rhoConst<Foam::specie> >, Foam::sensibleInternalEnergy> > > >::calculate() at ??:?
+#5  Foam::heSolidThermo<Foam::solidThermo::composite, Foam::pureMixture<Foam::constIsoSolidTransport<Foam::species::thermo<Foam::eConstThermo<Foam::rhoConst<Foam::specie> >, Foam::sensibleInternalEnergy> > > >::heSolidThermo(Foam::fvMesh const&, Foam::word const&) at ??:?
+#6  Foam::solidThermo::addfvMeshConstructorToTable<Foam::heSolidThermo<Foam::solidThermo::composite, Foam::pureMixture<Foam::constIsoSolidTransport<Foam::species::thermo<Foam::eConstThermo<Foam::rhoConst<Foam::specie> >, Foam::sensibleInternalEnergy> > > > >::New(Foam::fvMesh const&, Foam::word const&) at ??:?
+#7  Foam::autoPtr<Foam::solidThermo> Foam::basicThermo::New<Foam::solidThermo>(Foam::fvMesh const&, Foam::word const&) at ??:?
+#8  Foam::solidThermo::New(Foam::fvMesh const&, Foam::word const&) at ??:?
+#9  Foam::solvers::solid::solid(Foam::fvMesh&) at ??:?
+#10  Foam::solver::addfvMeshConstructorToTable<Foam::solvers::solid>::New(Foam::fvMesh&) at ??:?
+#11  Foam::solver::New(Foam::word const&, Foam::fvMesh&) at ??:?
+#12  ? in "/home/user/OpenFOAM-11/platforms/linux64GccDPInt32Opt/bin/foamMultiRun"
+#13  ? in "/home/user/OpenFOAM-11/platforms/linux64GccDPInt32Opt/bin/foamMultiRun"
+#14  __libc_start_main in "/lib/x86_64-linux-gnu/libc.so.6"
+#15  ? in "/home/user/OpenFOAM-11/platforms/linux64GccDPInt32Opt/bin/foamMultiRun"

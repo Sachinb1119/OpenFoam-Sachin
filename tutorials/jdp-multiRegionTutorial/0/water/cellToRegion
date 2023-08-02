@@ -1,0 +1,52 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       volScalarField;
+    location    "0/water";
+    object      cellToRegion;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 0 0 0 0];
+
+internalField   uniform 1;
+
+boundaryField
+{
+    minX
+    {
+        type            zeroGradient;
+    }
+    maxX
+    {
+        type            zeroGradient;
+    }
+    minZ
+    {
+        type            zeroGradient;
+    }
+    maxZ
+    {
+        type            zeroGradient;
+    }
+    water_to_region1
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    water_to_heater
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+}
+
+
+// ************************************************************************* //

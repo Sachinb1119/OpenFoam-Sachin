@@ -1,0 +1,75 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  11
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       polyBoundaryMesh;
+    location    "constant/silicaGel/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+6
+(
+    walls
+    {
+        type            wall;
+        inGroups        List<word> 1(wall);
+        nFaces          428;
+        startFace       8322;
+    }
+    back
+    {
+        type            symmetry;
+        inGroups        List<word> 1(symmetry);
+        nFaces          288;
+        startFace       8750;
+    }
+    silicaGel_to_topCoolant
+    {
+        type            mappedWall;
+        inGroups        List<word> 1(wall);
+        nFaces          2120;
+        startFace       9038;
+        neighbourRegion topCoolant;
+        neighbourPatch  topCoolant_to_silicaGel;
+        transformType   none;
+    }
+    silicaGel_to_bottomCoolant
+    {
+        type            mappedWall;
+        inGroups        List<word> 1(wall);
+        nFaces          2120;
+        startFace       11158;
+        neighbourRegion bottomCoolant;
+        neighbourPatch  bottomCoolant_to_silicaGel;
+        transformType   none;
+    }
+    silicaGel_to_batteries
+    {
+        type            mappedWall;
+        inGroups        List<word> 1(wall);
+        nFaces          3540;
+        startFace       13278;
+        neighbourRegion batteries;
+        neighbourPatch  batteries_to_silicaGel;
+        transformType   none;
+    }
+    silicaGel_to_Air
+    {
+        type            mappedWall;
+        inGroups        List<word> 1(wall);
+        nFaces          780;
+        startFace       16818;
+        neighbourRegion Air;
+        neighbourPatch  Air_to_silicaGel;
+        transformType   none;
+    }
+)
+
+// ************************************************************************* //

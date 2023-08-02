@@ -1,0 +1,67 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2112                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    arch        "LSB;label=32;scalar=64";
+    class       dictionary;
+    location    "constant/battery1";
+    object      thermophysicalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+thermoType
+{
+type      heSolidThermo;
+thermo   eConst; // or just thermo
+equationOfState  rhoConst;
+energy   sensibleInternalEnergy;
+specie  specie;
+transport constIsoSolid;
+mixture  pureMixture;
+equationOfState rhoConst;
+}
+
+
+mixture
+{
+    // Water
+
+    specie
+    {
+        molWeight       18;
+    }
+    equationOfState
+    {
+        rho             1000;
+    }
+    thermodynamics
+    {
+      Cp 733; // Specific heat capacity at constant pressure, [J/(kmol K)], ref. FactSage FactPS database
+      rho 1958.7; // density, [kg/m^3]
+      Cv   717.5;
+      Hf   287;
+    }
+    transport
+    {
+    kappa 2.7; // thermal conductivity, [W/(m.K)]
+    }
+}
+
+/*
+transport
+{
+kappa 2.7; // thermal conductivity, [W/(m.K)]
+}
+
+thermodynamics
+{
+Cp 733; // Specific heat capacity at constant pressure, [J/(kmol K)], ref. FactSage FactPS database
+rho 1958.7; // density, [kg/m^3]
+}  */
+
